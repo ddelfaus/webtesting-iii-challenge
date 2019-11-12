@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Display from './Display'
 
+
+
 test('Should Match The Snapshot', () => {
     expect(render(<Display/>)).toMatchSnapshot();
   });
@@ -18,5 +20,11 @@ test('App renders', () => {
   test('Contains the button Lock Gate', () => {
     const { getByText } = render(<Display />);
     getByText(/Unlocked/i);
-    getByText(/open/i);
+   
   });
+
+  test('displays the status of the gate with given inputs' , () => {
+    const {getByText} = render( <Display closed = {false} locked ={false} />, )
+
+    expect(getByText(/Open/i))
+  })
